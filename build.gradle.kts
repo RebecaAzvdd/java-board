@@ -1,5 +1,10 @@
 plugins {
     id("java")
+    id("application")
+}
+
+application {
+    mainClass.set("me.dio.Main")
 }
 
 group = "me.dio"
@@ -8,6 +13,11 @@ version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
 }
+
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
+}
+
 
 dependencies {
     implementation("org.liquibase:liquibase-core:4.29.1")

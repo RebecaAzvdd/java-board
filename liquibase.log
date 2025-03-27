@@ -1,39 +1,48 @@
-Mar 22, 2025 2:49:07 PM liquibase.changelog
+Mar 27, 2025 11:18:02 AM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202403193311.sql
-Mar 22, 2025 2:49:07 PM liquibase.changelog
+Mar 27, 2025 11:18:02 AM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202403200012.sql
-Mar 22, 2025 2:49:07 PM liquibase.changelog
+Mar 27, 2025 11:18:02 AM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202403200412.sql
-Mar 22, 2025 2:49:07 PM liquibase.changelog
+Mar 27, 2025 11:18:02 AM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202403200912.sql
-Mar 22, 2025 2:49:08 PM liquibase.changelog
+Mar 27, 2025 11:18:04 AM liquibase.changelog
 INFO: Reading from board.DATABASECHANGELOG
-Database is up to date, no changesets to execute
-Mar 22, 2025 2:49:08 PM liquibase.changelog
-INFO: Reading from board.DATABASECHANGELOG
+Mar 27, 2025 11:18:04 AM liquibase.changelog
+INFO: Change failed validation!
+Mar 27, 2025 11:18:04 AM liquibase.command
+INFO: Logging exception.
+ERROR: Exception Details
+ERROR: Exception Primary Class:  ValidationFailedException
+ERROR: Exception Primary Reason:  Validation Failed:
+     1 changesets check sum
+          db/changelog/migrations/db.changelog-202403200912.sql::202403209012::rebeca was: 9:437eff607b9f849bdaa5e336c794e577 but is now: 9:e0b4b8a7cc20c661e6e540d88076e61e
 
-UPDATE SUMMARY
-Run:                          0
-Previously run:               4
-Filtered out:                 0
--------------------------------
-Total change sets:            4
-
-Mar 22, 2025 2:49:08 PM liquibase.util
-INFO: UPDATE SUMMARY
-Mar 22, 2025 2:49:08 PM liquibase.util
-INFO: Run:                          0
-Mar 22, 2025 2:49:08 PM liquibase.util
-INFO: Previously run:               4
-Mar 22, 2025 2:49:08 PM liquibase.util
-INFO: Filtered out:                 0
-Mar 22, 2025 2:49:08 PM liquibase.util
-INFO: -------------------------------
-Mar 22, 2025 2:49:08 PM liquibase.util
-INFO: Total change sets:            4
-Mar 22, 2025 2:49:08 PM liquibase.util
-INFO: Update summary generated
-Mar 22, 2025 2:49:08 PM liquibase.lockservice
-INFO: Successfully released change log lock
-Mar 22, 2025 2:49:08 PM liquibase.command
+ERROR: Exception Primary Source:  4.29.1
+Mar 27, 2025 11:18:04 AM liquibase.command
 INFO: Command execution complete
+liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/migrations/db.changelog-202403200912.sql::202403209012::rebeca was: 9:437eff607b9f849bdaa5e336c794e577 but is now: 9:e0b4b8a7cc20c661e6e540d88076e61e
+
+	at liquibase.command.CommandScope.execute(CommandScope.java:258)
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:216)
+	at liquibase.Scope.lambda$child$0(Scope.java:191)
+	at liquibase.Scope.child(Scope.java:200)
+	at liquibase.Scope.child(Scope.java:190)
+	at liquibase.Scope.child(Scope.java:169)
+	at liquibase.Liquibase.runInScope(Liquibase.java:1290)
+	at liquibase.Liquibase.update(Liquibase.java:205)
+	at liquibase.Liquibase.update(Liquibase.java:188)
+	at liquibase.Liquibase.update(Liquibase.java:175)
+	at liquibase.Liquibase.update(Liquibase.java:155)
+	at me.dio.persistence.migration.MigrationStrategy.executeMigration(MigrationStrategy.java:40)
+	at me.dio.Main.main(Main.java:14)
+Caused by: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/migrations/db.changelog-202403200912.sql::202403209012::rebeca was: 9:437eff607b9f849bdaa5e336c794e577 but is now: 9:e0b4b8a7cc20c661e6e540d88076e61e
+
+	at liquibase.changelog.DatabaseChangeLog.validate(DatabaseChangeLog.java:393)
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.run(DatabaseChangelogCommandStep.java:92)
+	at liquibase.command.CommandScope.execute(CommandScope.java:220)
+	... 12 more
